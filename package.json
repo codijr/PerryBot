@@ -4,6 +4,7 @@
   "description": "Perry Bot is a bot for Codijr Discord",
   "main": "index.js",
   "scripts": {
+    "start": "ts-node src/server.ts",
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --no-notify --respawn src/server.ts"
   },
   "repository": "git@github.com:codijr/PerryBot.git",
@@ -11,7 +12,8 @@
   "dependencies": {
     "axios": "^0.27.2",
     "discord.js": "^14.2.0",
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.33.1",
