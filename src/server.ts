@@ -2,6 +2,7 @@ import DiscordJS, { GatewayIntentBits as Intents } from 'discord.js';
 import dotenv from 'dotenv';
 import { commands } from './commands';
 
+
 dotenv.config();
 
 const client = new DiscordJS.Client({
@@ -17,8 +18,10 @@ client.on('ready', () => {
 });
 
 client.on('messageCreate', async message => {
-	if (message.content === commands[0].name) {
-		await message.channel.send(commands[0].reply);
+	for (const command of commands) {
+		if (message.content.toLowerCase() === (command.name)) {
+			await message.channel.send(command.reply);
+		}
 	}
 });
 
