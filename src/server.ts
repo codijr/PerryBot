@@ -5,7 +5,8 @@ dotenv.config();
 const client = new DiscordJS.Client({
 	intents: [
 		Intents.Guilds,
-		Intents.GuildMessages
+		Intents.GuildMessages,
+		Intents.MessageContent
 	]
 });
 
@@ -13,11 +14,9 @@ client.on('ready', () => {
 	console.log('Perry ta na área 😎');
 });
 
-client.on('messageCreate', (message) => {
-	if(message.content === 'oi') {
-		message.reply({
-			content: 'Olá'
-		});
+client.on('messageCreate', async message => {
+	if(message.content === '!teste') {
+		await message.channel.send('deu bom');
 	}
 });
 
