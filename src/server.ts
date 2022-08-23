@@ -6,16 +6,16 @@ const client = new DiscordJS.Client({
 	intents: [
 		Intents.Guilds,
 		Intents.GuildMessages,
-		Intents.MessageContent
-	]
+		Intents.MessageContent,
+	],
 });
 
 client.on('ready', () => {
 	console.log('Perry ta na área 😎');
 });
-
+ 
 client.on('messageCreate', async message => {
-	if(message.content === '!teste') {
+	if (message.content === '!teste') {
 		await message.channel.send('deu bom');
 	}
 });
