@@ -2,7 +2,7 @@ import axios from 'axios';
 import DiscordJS, { GatewayIntentBits as Intents } from 'discord.js';
 import dotenv from 'dotenv';
 import { commands } from './commands';
-import { loremIpsumApi, weatherApi } from './services/api';
+import { loremIpsumApi, weatherApi, yesNoApi } from './services/api';
 
 let prefix = "!";
 
@@ -21,6 +21,7 @@ client.on('ready', () => {
 });
 
 client.on('messageCreate', async message => {
+
 	//See weather of city
 	if (message.content.toLowerCase().startsWith(prefix + "clima")) {
 		const city = message.content.split(' ').slice(1).join(" ");
@@ -50,6 +51,13 @@ client.on('messageCreate', async message => {
 
 			message.reply(lorem);
 		}).catch(err => console.log(err));
+
+		//Yes or No
+	} else if (message.content.startsWith(prefix + "decide perry")) {
+		yesNoApi.get('/').then(e => {
+			const response = e.data;
+			message.reply(response.image);
+		})
 
 		//Simple text messages
 	} else {
